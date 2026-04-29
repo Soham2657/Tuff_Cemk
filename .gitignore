@@ -23,6 +23,9 @@ __pycache__/
 *.pkl
 *.joblib
 
+# Exception: Include ML model files for production deployment
+!ml-service/queue_time_model.pkl
+
 # Build outputs and coverage
 dist/
 build/
