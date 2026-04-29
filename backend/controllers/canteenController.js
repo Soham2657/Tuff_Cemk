@@ -258,7 +258,7 @@ export const getQueueInfo = async (req, res) => {
     let estimatedTime = baseTimeForCurrentOrder; // Start with at least the base time
 
     try {
-      const response = await fetchApi("http://localhost:8000/predict", {
+      const response = await fetchApi("https://tuff-cemk.onrender.com/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
