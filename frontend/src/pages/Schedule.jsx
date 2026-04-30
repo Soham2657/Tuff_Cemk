@@ -30,7 +30,7 @@ const Schedule = () => {
               title: `Canteen order #${order.tokenNumber}`,
               location: order.status,
               type: 'Order',
-              duration: order.totalPrice ? `$${order.totalPrice.toFixed(2)}` : 'Order placed',
+              duration: order.totalPrice ? `₹${order.totalPrice.toFixed(2)}` : 'Order placed',
             }))
           : [];
 

@@ -64,7 +64,7 @@ const Login = () => {
                 onChange={handleChange}
                 required={!isLogin}
                 className="w-full px-4 py-3 rounded-xl border border-outline-variant bg-white/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all"
-                placeholder="John Doe"
+                placeholder="Ritam Manna"
               />
             </div>
           )}
@@ -126,7 +126,7 @@ const Login = () => {
               onChange={handleChange}
               required
               className="w-full px-4 py-3 rounded-xl border border-outline-variant bg-white/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all"
-              placeholder="you@university.edu"
+              placeholder="you@cemk.ac.in"
             />
           </div>
           

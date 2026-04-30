@@ -325,7 +325,7 @@ const Canteen = () => {
                   <div>
                     <div className="flex justify-between items-start mb-2">
                       <h3 className="font-h3 text-[24px] font-bold text-on-surface leading-tight group-hover:text-primary transition-colors">{featuredItem.name}</h3>
-                      <span className="font-h3 text-[24px] font-bold text-secondary">${Number(featuredItem.price).toFixed(2)}</span>
+                      <span className="font-h3 text-[24px] font-bold text-secondary">₹{Number(featuredItem.price).toFixed(2)}</span>
                     </div>
                     <p className="font-body-sm text-[16px] text-on-surface-variant mb-4 line-clamp-2">
                       {formatCategory(featuredItem.category)} • Prep weight: {featuredItem.prepWeight || 5}
@@ -363,7 +363,7 @@ const Canteen = () => {
                 <div className="p-5 flex flex-col flex-1">
                   <div className="flex justify-between items-start mb-1">
                     <h3 className="font-label-bold text-[16px] font-semibold text-on-surface group-hover:text-primary transition-colors">{item.name}</h3>
-                    <span className="font-label-bold text-[16px] font-semibold text-secondary">${item.price.toFixed(2)}</span>
+                    <span className="font-label-bold text-[16px] font-semibold text-secondary">₹{item.price.toFixed(2)}</span>
                   </div>
                   <p className="font-body-sm text-[14px] text-on-surface-variant mb-4 line-clamp-2 flex-1">
                     {formatCategory(item.category)} • Prep weight: {item.prepWeight || 5}
@@ -446,7 +446,7 @@ const Canteen = () => {
                 <div className="flex-1">
                   <div className="flex justify-between items-start">
                     <h4 className="font-label-bold text-[14px] font-semibold text-on-surface">{item.name}</h4>
-                    <span className="font-label-bold text-[14px] font-semibold text-primary">${(item.price * item.quantity).toFixed(2)}</span>
+                    <span className="font-label-bold text-[14px] font-semibold text-primary">₹{(item.price * item.quantity).toFixed(2)}</span>
                   </div>
                   <p className="text-[12px] text-on-surface-variant mb-2">Qty: {item.quantity}</p>
                   <div className="flex items-center gap-3">
@@ -468,15 +468,15 @@ const Canteen = () => {
           <div className="p-6 bg-surface-container-low border-t border-outline-variant/20 rounded-b-3xl">
             <div className="flex justify-between items-center mb-2 text-sm">
               <span className="text-on-surface-variant">Subtotal</span>
-              <span className="font-medium text-on-surface">${totalPrice.toFixed(2)}</span>
+              <span className="font-medium text-on-surface">₹{totalPrice.toFixed(2)}</span>
             </div>
             <div className="flex justify-between items-center mb-4 text-sm">
               <span className="text-on-surface-variant">Tax (8%)</span>
-              <span className="font-medium text-on-surface">${(totalPrice * 0.08).toFixed(2)}</span>
+              <span className="font-medium text-on-surface">₹{(totalPrice * 0.08).toFixed(2)}</span>
             </div>
             <div className="border-t border-outline-variant/30 pt-4 mb-6 flex justify-between items-center">
               <span className="font-label-bold text-[16px] font-semibold text-on-surface">Total</span>
-              <span className="font-h3 text-[20px] font-bold text-primary">${(totalPrice * 1.08).toFixed(2)}</span>
+              <span className="font-h3 text-[20px] font-bold text-primary">₹{(totalPrice * 1.08).toFixed(2)}</span>
             </div>
             <button 
               onClick={handleCheckout}
@@ -506,7 +506,7 @@ const Canteen = () => {
                       <p className="font-semibold text-on-surface">Order #{order.tokenNumber}</p>
                       <p className="text-sm text-on-surface-variant">{order.user?.name || 'Student'} • {order.status}</p>
                     </div>
-                    <span className="text-sm font-semibold text-primary">${Number(order.totalPrice || 0).toFixed(2)}</span>
+                    <span className="text-sm font-semibold text-primary">₹{Number(order.totalPrice || 0).toFixed(2)}</span>
                   </div>
                   <div className="flex gap-2 flex-wrap">
                     <button onClick={() => handleOrderStatus(order._id, 'Preparing')} className="rounded-lg bg-secondary px-3 py-2 text-xs font-semibold text-on-secondary">Preparing</button>
