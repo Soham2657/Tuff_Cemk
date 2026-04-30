@@ -43,18 +43,27 @@ const AdminRoute = ({ children }) => {
 
 const Layout = ({ children }) => {
   const navigate = useNavigate();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="bg-surface text-on-surface font-['Plus_Jakarta_Sans'] antialiased min-h-screen flex">
-      <Sidebar />
-      <div className="ml-70 flex-1 flex flex-col min-h-screen relative">
-        <Header />
-        <main className="flex-1 p-10 max-w-360 mx-auto w-full">
+      {sidebarOpen && (
+        <button
+          type="button"
+          aria-label="Close sidebar"
+          onClick={() => setSidebarOpen(false)}
+          className="fixed inset-0 z-40 bg-slate-950/40 backdrop-blur-[2px] md:hidden"
+        />
+      )}
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <div className="flex-1 flex flex-col min-h-screen relative md:ml-70">
+        <Header onMenuClick={() => setSidebarOpen(true)} />
+        <main className="flex-1 px-4 py-6 sm:px-6 lg:px-10 lg:py-10 max-w-360 mx-auto w-full">
           {children}
         </main>
         
         {/* Floating AI Chatbot Button */}
-        <button onClick={() => navigate('/ai')} className="fixed bottom-8 right-8 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all z-50 flex items-center justify-center group focus:outline-none focus:ring-4 focus:ring-primary-container">
+        <button onClick={() => navigate('/ai')} className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 w-12 h-12 sm:w-14 sm:h-14 bg-primary text-on-primary rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all z-50 flex items-center justify-center group focus:outline-none focus:ring-4 focus:ring-primary-container">
           <span className="material-symbols-outlined icon-fill text-[28px] group-hover:scale-110 transition-transform">smart_toy</span>
         </button>
       </div>

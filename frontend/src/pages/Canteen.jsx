@@ -232,19 +232,19 @@ const Canteen = () => {
   const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0);
 
   return (
-    <div className="flex flex-col xl:flex-row gap-6">
+    <div className="flex flex-col xl:flex-row gap-4 sm:gap-6">
       {/* Left Column: Menu Browsing */}
-      <div className="flex-1 flex flex-col gap-8">
+      <div className="flex-1 flex flex-col gap-6 sm:gap-8">
         
         {/* Header Section */}
-        <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+        <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-3 sm:gap-4">
           <div>
-            <h1 className="font-h1 text-[40px] font-extrabold text-on-surface">Canteen</h1>
-            <p className="font-body-lg text-[18px] text-on-surface-variant mt-2">Order ahead and skip the line.</p>
+            <h1 className="font-h1 text-[32px] sm:text-[40px] font-extrabold text-on-surface">Canteen</h1>
+            <p className="font-body-lg text-[16px] sm:text-[18px] text-on-surface-variant mt-2">Order ahead and skip the line.</p>
           </div>
           
           {/* Search & Filter */}
-          <div className="flex gap-2 w-full md:w-auto">
+          <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
             <div className="relative flex-1 md:w-64">
               <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary">search</span>
               <input 
@@ -307,11 +307,11 @@ const Canteen = () => {
              <div className="animate-spin w-10 h-10 border-4 border-primary border-t-transparent rounded-full"></div>
            </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             
             {featuredItem ? (
               <div className="col-span-1 sm:col-span-2 bg-linear-to-br from-surface-container-lowest to-surface-container-low rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col sm:flex-row group border border-outline-variant/40 hover:border-secondary/30 hover:shadow-[0_16px_50px_rgba(0,0,0,0.12)] transition-all duration-300">
-                <div className="sm:w-1/2 h-48 sm:h-auto relative overflow-hidden">
+                <div className="sm:w-1/2 h-44 sm:h-auto relative overflow-hidden">
                   <img 
                     alt={featuredItem.name} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
@@ -321,7 +321,7 @@ const Canteen = () => {
                     <span className="material-symbols-outlined text-[14px]">local_fire_department</span> Featured
                   </div>
                 </div>
-                <div className="sm:w-1/2 p-6 flex flex-col justify-between">
+                <div className="sm:w-1/2 p-4 sm:p-6 flex flex-col justify-between gap-4">
                   <div>
                     <div className="flex justify-between items-start mb-2">
                       <h3 className="font-h3 text-[24px] font-bold text-on-surface leading-tight group-hover:text-primary transition-colors">{featuredItem.name}</h3>
@@ -353,14 +353,14 @@ const Canteen = () => {
             {/* Map remaining items */}
             {menuItems.slice(1).map((item) => (
               <div key={item._id} className="bg-linear-to-br from-surface-container-lowest to-surface-container-low rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.06)] overflow-hidden flex flex-col group border border-outline-variant/40 hover:border-secondary/30 hover:shadow-[0_16px_50px_rgba(0,0,0,0.12)] transition-all duration-300">
-                <div className="h-40 relative overflow-hidden">
+                <div className="h-36 sm:h-40 relative overflow-hidden">
                   <img 
                     alt={item.name} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                     src={item.image || '/vite.svg'} 
                   />
                 </div>
-                <div className="p-5 flex flex-col flex-1">
+                <div className="p-4 sm:p-5 flex flex-col flex-1">
                   <div className="flex justify-between items-start mb-1">
                     <h3 className="font-label-bold text-[16px] font-semibold text-on-surface group-hover:text-primary transition-colors">{item.name}</h3>
                     <span className="font-label-bold text-[16px] font-semibold text-secondary">₹{item.price.toFixed(2)}</span>
@@ -383,10 +383,10 @@ const Canteen = () => {
       </div>
 
       {/* Right Column: Queue Status & Cart Sidebar */}
-      <aside className="w-full xl:w-95 flex flex-col gap-8 shrink-0">
+      <aside className="w-full xl:w-95 flex flex-col gap-6 sm:gap-8 shrink-0">
         
         {/* Queue Status Glassmorphism Card */}
-        <div className="bg-linear-to-br from-secondary/10 to-secondary-fixed/30 backdrop-blur-xl rounded-3xl p-6 border border-white/40 shadow-[0_8px_30px_rgba(0,0,0,0.04)] relative overflow-hidden">
+        <div className="bg-linear-to-br from-secondary/10 to-secondary-fixed/30 backdrop-blur-xl rounded-3xl p-4 sm:p-6 border border-white/40 shadow-[0_8px_30px_rgba(0,0,0,0.04)] relative overflow-hidden">
           {/* Decorative background elements */}
           <div className="absolute -right-8 -top-8 w-32 h-32 bg-secondary/20 rounded-full blur-2xl"></div>
           <div className="absolute -left-8 -bottom-8 w-24 h-24 bg-primary/10 rounded-full blur-xl"></div>
@@ -428,8 +428,8 @@ const Canteen = () => {
 
         {/* Cart Sidebar Panel */}
         {!isAdmin && (
-          <div className="bg-surface-container-lowest rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-outline-variant/30 flex flex-col h-[calc(100vh-280px)] xl:h-auto xl:min-h-125 flex-1 sticky top-10">
-          <div className="p-6 border-b border-outline-variant/20 flex justify-between items-center">
+          <div className="bg-surface-container-lowest rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-outline-variant/30 flex flex-col h-auto xl:h-auto xl:min-h-125 flex-1 xl:sticky xl:top-10">
+          <div className="p-4 sm:p-6 border-b border-outline-variant/20 flex justify-between items-center">
             <h2 className="font-h3 text-[24px] font-bold text-on-surface flex items-center gap-2">
               <span className="material-symbols-outlined">shopping_cart</span> Order Summary
             </h2>
@@ -437,7 +437,7 @@ const Canteen = () => {
           </div>
           
           {/* Cart Items (Scrollable) */}
-          <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-4">
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6 flex flex-col gap-4">
             {cartItems.length === 0 ? (
               <div className="text-sm text-on-surface-variant">Your cart is empty.</div>
             ) : cartItems.map((item) => (
@@ -465,7 +465,7 @@ const Canteen = () => {
           </div>
 
           {/* Checkout Section */}
-          <div className="p-6 bg-surface-container-low border-t border-outline-variant/20 rounded-b-3xl">
+          <div className="p-4 sm:p-6 bg-surface-container-low border-t border-outline-variant/20 rounded-b-3xl">
             <div className="flex justify-between items-center mb-2 text-sm">
               <span className="text-on-surface-variant">Subtotal</span>
               <span className="font-medium text-on-surface">₹{totalPrice.toFixed(2)}</span>

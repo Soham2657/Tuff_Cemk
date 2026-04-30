@@ -133,14 +133,14 @@ const Events = () => {
   };
 
   return (
-    <div className="flex flex-col xl:flex-row gap-8">
-      <div className="flex-1 flex flex-col gap-8">
+    <div className="flex flex-col xl:flex-row gap-4 sm:gap-8">
+      <div className="flex-1 flex flex-col gap-6 sm:gap-8">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
           <div>
-            <h2 className="font-h2 text-[32px] font-bold text-on-surface mb-2">Campus Events</h2>
-            <p className="font-body-md text-[16px] text-on-surface-variant">Discover what's happening around campus this week.</p>
+            <h2 className="font-h2 text-[28px] sm:text-[32px] font-bold text-on-surface mb-2">Campus Events</h2>
+            <p className="font-body-md text-[15px] sm:text-[16px] text-on-surface-variant">Discover what's happening around campus this week.</p>
           </div>
-          <div className="relative flex-1 sm:flex-none sm:w-64">
+          <div className="relative w-full sm:flex-none sm:w-64">
             <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary">search</span>
             <input 
               ref={searchInputRef}
@@ -156,7 +156,7 @@ const Events = () => {
         </div>
 
         {isAdmin && (
-          <form onSubmit={handleCreateEvent} className="rounded-[20px] border border-outline-variant/30 bg-surface-container-lowest p-6 grid gap-4 md:grid-cols-2">
+          <form onSubmit={handleCreateEvent} className="rounded-[20px] border border-outline-variant/30 bg-surface-container-lowest p-4 sm:p-6 grid gap-4 md:grid-cols-2">
             <div className="md:col-span-2">
               <h3 className="font-h3 text-[24px] font-bold text-on-surface">Create Event</h3>
             </div>
@@ -185,14 +185,14 @@ const Events = () => {
              <div className="animate-spin w-10 h-10 border-4 border-primary border-t-transparent rounded-full"></div>
            </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-4 sm:gap-6">
             {events.length === 0 ? (
               <div className="rounded-[20px] border border-outline-variant/30 bg-surface-container-lowest p-6 text-on-surface-variant">
                 No events are available right now.
               </div>
             ) : events.map((evt) => (
               <article key={evt._id} className="bg-linear-to-br from-surface-container-lowest to-surface-container-low rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.06)] border border-outline-variant/40 overflow-hidden flex flex-col group hover:shadow-[0_16px_50px_rgba(149,73,33,0.12)] hover:border-secondary/30 transition-all duration-300">
-                <div className="h-48 w-full relative overflow-hidden">
+                <div className="h-40 sm:h-48 w-full relative overflow-hidden">
                   <img 
                     alt={evt.title} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
@@ -203,29 +203,29 @@ const Events = () => {
                     <span className="font-label-sm text-[12px] text-on-primary font-semibold">{evt.category || 'General'}</span>
                   </div>
                 </div>
-                <div className="p-6 flex flex-col flex-1 gap-4">
+                <div className="p-4 sm:p-6 flex flex-col flex-1 gap-4">
                   <div className="flex items-center gap-2 text-secondary font-label-bold text-[14px] font-semibold">
                     <span className="material-symbols-outlined text-[18px]">calendar_month</span>
                     <span>{formatDate(evt.date)}</span>
                   </div>
                   <h3 className="font-h3 text-[24px] font-bold text-on-surface line-clamp-2 group-hover:text-primary transition-colors">{evt.title}</h3>
                   <p className="font-body-md text-[16px] text-on-surface-variant line-clamp-2 -mt-2">{evt.description}</p>
-                  <div className="mt-auto pt-4 flex items-center justify-between border-t border-outline-variant/30">
+                  <div className="mt-auto pt-4 border-t border-outline-variant/30 flex flex-col gap-3">
                     <div className="flex items-center gap-2 text-on-surface-variant">
                       <span className="material-symbols-outlined text-[18px]">location_on</span>
                       <span className="font-label-sm text-[12px] font-medium">{evt.location}</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Link to={`/events/${evt._id}`} className="px-4 py-2 rounded-lg border border-outline-variant/20 text-on-surface-variant hover:bg-surface-container-low transition-colors">View</Link>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                      <Link to={`/events/${evt._id}`} className="w-full sm:w-auto text-center px-4 py-2 rounded-lg border border-outline-variant/20 text-on-surface-variant hover:bg-surface-container-low transition-colors">View</Link>
                       {isAdmin ? (
-                        <button onClick={() => handleDeleteEvent(evt._id)} className="bg-error text-on-error px-5 py-2 rounded-lg font-label-bold text-[14px] font-semibold shadow-sm">
+                        <button onClick={() => handleDeleteEvent(evt._id)} className="w-full sm:w-auto bg-error text-on-error px-5 py-2 rounded-lg font-label-bold text-[14px] font-semibold shadow-sm">
                           Delete
                         </button>
                       ) : (
                         <button 
                           onClick={() => handleRegister(evt._id)}
                           disabled={registeringId === evt._id}
-                          className="bg-primary text-on-primary px-5 py-2 rounded-lg font-label-bold text-[14px] font-semibold hover:opacity-90 transition-opacity shadow-sm disabled:opacity-70"
+                          className="w-full sm:w-auto bg-primary text-on-primary px-5 py-2 rounded-lg font-label-bold text-[14px] font-semibold hover:opacity-90 transition-opacity shadow-sm disabled:opacity-70"
                         >
                           {registeringId === evt._id ? 'Registering...' : 'Register'}
                         </button>
@@ -241,9 +241,9 @@ const Events = () => {
       
       {!isAdmin && (
         <aside className="w-full xl:w-90 shrink-0 flex flex-col gap-6">
-          <div className="bg-surface-container-low rounded-3xl p-6 border border-outline-variant/20 shadow-[0_8px_30px_rgba(0,0,0,0.02)] sticky top-24">
+          <div className="bg-surface-container-low rounded-3xl p-4 sm:p-6 border border-outline-variant/20 shadow-[0_8px_30px_rgba(0,0,0,0.02)] xl:sticky xl:top-24">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="font-h3 text-[24px] font-bold text-on-surface">My Registered Events</h3>
+              <h3 className="font-h3 text-[20px] sm:text-[24px] font-bold text-on-surface">My Registered Events</h3>
               <button className="text-primary hover:text-primary-fixed-dim transition-colors">
                 <span className="material-symbols-outlined">more_horiz</span>
               </button>

@@ -109,12 +109,12 @@ const Dashboard = () => {
       )}
 
       {/* Bento Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6">
         {/* Left Column (Span 8) */}
-        <div className="md:col-span-8 flex flex-col gap-6">
+        <div className="md:col-span-8 flex flex-col gap-4 sm:gap-6">
           
           {/* Active Orders (Featured Card) */}
-          <div className="bg-linear-to-br from-primary-container/20 to-surface-container-lowest rounded-xl p-6 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-outline-variant/30 relative overflow-hidden backdrop-blur-sm">
+          <div className="bg-linear-to-br from-primary-container/20 to-surface-container-lowest rounded-xl p-4 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-outline-variant/30 relative overflow-hidden backdrop-blur-sm">
             {/* Decorative Glass Element */}
             <div className="absolute -right-12 -top-12 w-48 h-48 bg-primary-fixed-dim/20 rounded-full blur-3xl"></div>
             
@@ -157,7 +157,7 @@ const Dashboard = () => {
           </div>
 
           {/* Upcoming Events */}
-          <div className="bg-surface-container-lowest rounded-xl p-6 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-outline-variant/20">
+          <div className="bg-surface-container-lowest rounded-xl p-4 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-outline-variant/20">
             <div className="flex justify-between items-center mb-6 border-b border-outline-variant/20 pb-4">
               <h3 className="font-h3 text-[24px] font-bold text-on-surface flex items-center gap-2">
                 <span className="material-symbols-outlined text-secondary">calendar_month</span>
@@ -197,9 +197,9 @@ const Dashboard = () => {
         </div>
 
         {/* Right Column (Span 4) */}
-        <div className="md:col-span-4 flex flex-col gap-6">
+        <div className="md:col-span-4 flex flex-col gap-4 sm:gap-6">
           {/* Joined Clubs */}
-          <div className="bg-surface-container-lowest rounded-xl p-6 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-outline-variant/20 flex-1">
+          <div className="bg-surface-container-lowest rounded-xl p-4 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-outline-variant/20 flex-1">
             <div className="flex justify-between items-center mb-6">
               <h3 className="font-h3 text-[24px] font-bold text-on-surface">Joined Clubs</h3>
               <span className="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-primary font-label-bold text-[14px] font-semibold">

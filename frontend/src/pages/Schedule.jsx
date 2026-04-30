@@ -9,13 +9,13 @@ const Schedule = () => {
   useEffect(() => {
     const loadSchedule = async () => {
       try {
-        const [events, orders] = await Promise.all([
-          eventService.getEvents().catch(() => []),
+        const [registeredEvents, orders] = await Promise.all([
+          eventService.getMyEvents().catch(() => []),
           canteenService.getMyOrders().catch(() => []),
         ]);
 
-        const eventItems = Array.isArray(events)
-          ? events.slice(0, 3).map((event) => ({
+        const eventItems = Array.isArray(registeredEvents)
+          ? registeredEvents.slice(0, 3).map((event) => ({
               time: event.time || 'Time pending',
               title: event.title,
               location: event.location,
@@ -47,8 +47,8 @@ const Schedule = () => {
   }, []);
 
   return (
-    <div className="flex-1 w-full pb-24 flex flex-col gap-8">
-      <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <div className="flex-1 w-full pb-20 sm:pb-24 flex flex-col gap-6 sm:gap-8">
+      <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 sm:gap-4">
         <div>
           <h2 className="font-h1 text-[40px] font-bold text-on-surface tracking-tight mb-1">My Schedule</h2>
           <p className="font-body-lg text-[18px] text-on-surface-variant">View your upcoming classes and events for today.</p>
@@ -72,20 +72,20 @@ const Schedule = () => {
             <div className="p-6 text-on-surface-variant">No schedule data available yet.</div>
           ) : (
             scheduleData.map((item, index) => (
-              <div key={`${item.type}-${index}`} className={`flex flex-col sm:flex-row gap-4 p-6 ${index !== scheduleData.length - 1 ? 'border-b border-outline-variant/20' : ''} hover:bg-surface-container/30 transition-colors`}>
-                <div className="w-32 shrink-0 flex items-start gap-2">
+              <div key={`${item.type}-${index}`} className={`flex flex-col sm:flex-row gap-3 sm:gap-4 p-4 sm:p-6 ${index !== scheduleData.length - 1 ? 'border-b border-outline-variant/20' : ''} hover:bg-surface-container/30 transition-colors`}>
+                <div className="w-full sm:w-32 shrink-0 flex items-start gap-2">
                   <span className="font-label-bold text-[16px] text-on-surface font-semibold">{item.time}</span>
                 </div>
                 
                 <div className="flex-1 flex flex-col gap-2">
-                  <div className="flex justify-between items-start">
-                    <h3 className="font-h3 text-[20px] font-bold text-on-surface">{item.title}</h3>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+                    <h3 className="font-h3 text-[18px] sm:text-[20px] font-bold text-on-surface wrap-break-word">{item.title}</h3>
                     <span className="px-3 py-1 rounded-full text-[12px] font-bold bg-secondary/10 text-secondary">
                       {item.type}
                     </span>
                   </div>
                   
-                  <div className="flex items-center gap-4 text-on-surface-variant text-[14px]">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-on-surface-variant text-[14px]">
                     <div className="flex items-center gap-1.5">
                       <span className="material-symbols-outlined text-[16px]">location_on</span>
                       {item.location}

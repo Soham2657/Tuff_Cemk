@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ onMenuClick }) => {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -12,13 +12,21 @@ const Header = () => {
   };
 
   return (
-    <header className="flex justify-between items-center h-16 px-8 w-full sticky top-0 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl z-40 border-b border-slate-200/50 dark:border-slate-800/50 shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
+    <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 sm:gap-4 px-4 sm:px-6 lg:px-8 py-3 sm:py-0 w-full sticky top-0 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl z-40 border-b border-slate-200/50 dark:border-slate-800/50 shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
       {/* Search (Left) */}
-      <div className="flex-1 max-w-md">
-        <div className="relative flex items-center w-full h-10 rounded-full bg-gradient-to-r from-surface-container-highest/50 to-surface-container-low/50 border border-secondary/30 focus-within:border-secondary focus-within:ring-2 focus-within:ring-secondary/50 transition-all hover:border-secondary/50">
+      <div className="flex items-center gap-2 w-full sm:flex-1 sm:max-w-md">
+        <button
+          type="button"
+          onClick={onMenuClick}
+          className="md:hidden w-10 h-10 rounded-full flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors active:scale-95 shrink-0"
+          aria-label="Open navigation menu"
+        >
+          <span className="material-symbols-outlined">menu</span>
+        </button>
+        <div className="relative flex items-center w-full h-10 rounded-full bg-linear-to-r from-surface-container-highest/50 to-surface-container-low/50 border border-secondary/30 focus-within:border-secondary focus-within:ring-2 focus-within:ring-secondary/50 transition-all hover:border-secondary/50">
           <span className="material-symbols-outlined absolute left-3 text-secondary">search</span>
           <input 
-            className="w-full h-full bg-transparent border-none pl-10 pr-4 rounded-full font-body-md text-[16px] text-on-surface focus:ring-0 placeholder:text-outline/70 focus:outline-none" 
+            className="w-full h-full bg-transparent border-none pl-10 pr-4 rounded-full font-body-md text-[15px] sm:text-[16px] text-on-surface focus:ring-0 placeholder:text-outline/70 focus:outline-none" 
             placeholder="Search campus..." 
             type="text" 
           />
@@ -26,7 +34,7 @@ const Header = () => {
       </div>
       
       {/* Actions (Right) */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center justify-end gap-1 sm:gap-2 w-full sm:w-auto">
         <button onClick={() => navigate('/notifications')} className="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors active:scale-95">
           <span className="material-symbols-outlined">notifications</span>
         </button>
@@ -41,7 +49,7 @@ const Header = () => {
           <span className="material-symbols-outlined">logout</span>
         </button>
         
-        <div className="ml-4 pl-4 border-l border-slate-200 h-8 flex items-center">
+        <div className="ml-2 sm:ml-4 pl-2 sm:pl-4 border-l border-slate-200 h-8 flex items-center">
           <button
             onClick={() => navigate('/profile')}
             className="w-8 h-8 rounded-full shadow-sm border border-slate-200 bg-primary flex items-center justify-center text-white font-bold text-xs overflow-hidden"
