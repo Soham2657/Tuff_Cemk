@@ -258,7 +258,7 @@ export const getQueueInfo = async (req, res) => {
     let estimatedTime = baseTimeForCurrentOrder; // Start with at least the base time
 
     try {
-      const response = await fetchApi("https://tuff-cemk.onrender.com/", {
+      const response = await fetchApi(process.env.ML_SERVICE_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
