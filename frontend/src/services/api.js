@@ -1,7 +1,13 @@
 import axios from 'axios';
 
+const rawBackendUrl = import.meta.env.VITE_BACKEND_URL || '';
+const trimmedBackendUrl = rawBackendUrl.replace(/\/+$/, '');
+const resolvedBaseUrl = trimmedBackendUrl
+  ? (trimmedBackendUrl.endsWith('/api') ? trimmedBackendUrl : `${trimmedBackendUrl}/api`)
+  : '/api';
+
 const api = axios.create({
-  baseURL: process.env.backend_url, // Pointing to deployed backend
+  baseURL: resolvedBaseUrl,
 });
 
 // Add a request interceptor to inject the token
