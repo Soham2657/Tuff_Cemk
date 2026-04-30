@@ -20,7 +20,7 @@ const Sidebar = () => {
         <img 
           src={TuffCemkLogo}
           alt="TuffCemk" 
-          className="w-10 h-10 object-contain group-hover:scale-110 transition-transform" 
+          className="w-14 h-14 object-contain group-hover:scale-110 transition-transform rounded-full border-2 border-primary" 
         />
         <div>
           <h1 className="font-h3 text-[24px] font-bold text-slate-900 dark:text-white tracking-tight">TuffCemk</h1>

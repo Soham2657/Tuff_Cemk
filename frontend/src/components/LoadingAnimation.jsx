@@ -24,11 +24,11 @@ const LoadingAnimation = ({ isLoading }) => {
     >
       <div className="flex flex-col items-center gap-6">
         {/* Logo with pulse animation */}
-        <div className="relative w-32 h-32">
+        <div className="relative w-48 h-48">
           <img
             src={TuffCemkLogo}
             alt="TuffCemk"
-            className="w-full h-full object-contain animate-bounce"
+            className="w-full h-full object-contain animate-bounce rounded-full border-4 border-primary shadow-lg"
           />
           {/* Glow effect */}
           <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl animate-pulse"></div>

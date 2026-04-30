@@ -1,8 +1,9 @@
 services:
   - type: web
-    name: TuffCemk-Frontend
-    runtime: static
-    staticPublishPath: ./dist
-    routes:
-      - path: /*
-        destination: /index.html
+    name: tuffcemk-frontend
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: VITE_BACKEND_URL
+        value: https://backend-tuffcemk.onrender.com
