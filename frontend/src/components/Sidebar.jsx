@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import TuffCemkLogo from '../assets/TuffCemklogo.png';
 
 const Sidebar = () => {
   const { user } = useContext(AuthContext);
@@ -12,15 +13,20 @@ const Sidebar = () => {
   return (
     <aside className="fixed left-0 top-0 h-full w-[280px] z-50 bg-white dark:bg-slate-950 border-r border-slate-100 dark:border-slate-900 shadow-sm flex flex-col p-6 gap-2">
       {/* Header */}
-      <div className="flex items-center gap-3 mb-8 px-2">
-        <div className="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container">
-          <span className="material-symbols-outlined icon-fill">school</span>
-        </div>
+      <button 
+        onClick={() => navigate('/')} 
+        className="flex items-center gap-3 mb-8 px-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors p-2 -mx-2 cursor-pointer group"
+      >
+        <img 
+          src={TuffCemkLogo}
+          alt="TuffCemk" 
+          className="w-10 h-10 object-contain group-hover:scale-110 transition-transform" 
+        />
         <div>
           <h1 className="font-h3 text-[24px] font-bold text-slate-900 dark:text-white tracking-tight">TuffCemk</h1>
           <p className="font-label-sm text-[12px] font-medium text-slate-500">College is in your pocket(sus)</p>
         </div>
-      </div>
+      </button>
 
       {/* Main Nav */}
       <nav className="flex-1 flex flex-col gap-1 font-['Plus_Jakarta_Sans'] text-[14px]">

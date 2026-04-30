@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import Login from './pages/Login';
@@ -16,6 +16,7 @@ import Schedule from './pages/Schedule';
 import Notifications from './pages/Notifications';
 import AIAssistant from './pages/AIAssistant';
 import Profile from './pages/Profile';
+import LoadingAnimation from './components/LoadingAnimation';
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
@@ -166,12 +167,23 @@ function AppRoutes() {
 }
 
 function App() {
+  const [isAppLoading, setIsAppLoading] = useState(true);
+
+  useEffect(() => {
+    // Show loading animation for initial app load
+    const timer = setTimeout(() => setIsAppLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <AuthProvider>
-      <Router>
-        <AppRoutes />
-      </Router>
-    </AuthProvider>
+    <>
+      <LoadingAnimation isLoading={isAppLoading} />
+      <AuthProvider>
+        <Router>
+          <AppRoutes />
+        </Router>
+      </AuthProvider>
+    </>
   );
 }
 
